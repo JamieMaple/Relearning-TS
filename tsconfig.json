@@ -4,6 +4,8 @@
     "watch": true,
     "target": "es6",
     "outDir": "./dist",
+    "module": "es2015",
+    "moduleResolution": "node",
     "strictNullChecks": true,
     "removeComments": true
   },

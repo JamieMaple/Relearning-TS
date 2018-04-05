@@ -1,4 +1,4 @@
-var a = 10
+let a = 10
 let bb = 100
 const ccc = 1000
 // ......
