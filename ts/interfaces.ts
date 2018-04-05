@@ -3,3 +3,5 @@ function printLabel(labelledObj: { label: string }) {
 }
 let myObj = { size: 10, label: "size 10 object" }
 printLabel(myObj)
+
+// interface LabelledValue
