@@ -1,0 +1,13 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "watch": true,
+    "target": "es6",
+    "outDir": "./dist",
+    "strictNullChecks": true,
+    "removeComments": true
+  },
+  "include": [
+    "./ts/*.ts"
+  ]
+}
