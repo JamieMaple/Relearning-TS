@@ -7,7 +7,7 @@
 
 - [x] Interface
 
-- [ ] Classes
+- [x] Classes
 
 - [ ] Functions
 

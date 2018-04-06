@@ -5,11 +5,13 @@
     "target": "es6",
     "outDir": "./dist",
     "module": "es2015",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
     "moduleResolution": "node",
     "strictNullChecks": true,
     "removeComments": true
   },
-  "include": [
-    "./ts/*.ts"
+  "files": [
+    "./ts/functions.ts"
   ]
 }
