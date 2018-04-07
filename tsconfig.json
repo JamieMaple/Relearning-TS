@@ -12,6 +12,6 @@
     "removeComments": true
   },
   "files": [
-    "./ts/functions.ts"
+    "./ts/typeCompatibility.ts"
   ]
 }

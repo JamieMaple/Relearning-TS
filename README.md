@@ -9,12 +9,12 @@
 
 - [x] Classes
 
-- [ ] Functions
+- [x] Functions
 
-- [ ] Generics
+- [x] Generics
 
-- [ ] Type Inference
+- [x] Type Inference
 
-- [ ] Type Compatibility
+- [x] Type Compatibility
 
-- [ ] Advanced Types
+- [x]ssdf Advanced Types
