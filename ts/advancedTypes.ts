@@ -221,5 +221,41 @@ function joke(): 1|2|3|4|5 {
   return 4
 }
 
-// discriminated unions
+// discriminated unions(可辨识联合)
+interface Square {
+  kind: "square"
+  size: number
+}
+interface Rectangle {
+  kind: "rectangle"
+  width: number
+  height: number
+}
+interface Circle {
+  kind: "circle"
+  radius: number
+}
+interface Triangle {
+  kind: "triangle"
+  length: number
+}
+type Shap = Square | Rectangle | Circle | Triangle
+function assertNever(x: never): never {
+  throw new Error("unexpected object: " + x)
+}
+function area(s: Shap): number {
+  switch(s.kind) {
+    case "square":
+      return s.size * s.size
+    case "rectangle":
+      return s.height * s.width
+    case "circle":
+      return Math.PI * s.radius * s.radius
+    case "triangle":
+      return s.length
+    default:
+      return assertNever(s)
+  }
+}
 
+// 
