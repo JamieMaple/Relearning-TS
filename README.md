@@ -21,7 +21,7 @@
 
 - [x] Symbol
 
-- [ ] Iterators and Generators
+- [x] Iterators and Generators
 
 - [ ] Modules
 
@@ -30,5 +30,5 @@
 - [ ] Namespaces and Modules
 
 - [ ] Module Resolution
-
+ 
 - [ ] Declaration Merging

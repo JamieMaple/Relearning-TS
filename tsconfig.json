@@ -16,6 +16,6 @@
     ]
   },
   "files": [
-    "./ts/symbols.ts"
+    "./ts/modules.ts"
   ]
 }
