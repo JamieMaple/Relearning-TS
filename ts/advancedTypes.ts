@@ -35,18 +35,18 @@ function padLeft(value: string, padding: string|number) {
 let indentedString = padLeft("Hello World", 123)
 
 interface Bird {
-  fly()
-  layEggs()
+  fly(): void
+  layEggs(): void
 }
 
 interface Fish {
-  swim()
-  layEggs()
+  swim(): void
+  layEggs(): void
 }
 
 function getSmallPet(): Fish|Bird {
   // codes.
-  return
+  return { layEggs() {}, fly() {} }
 }
 
 let pet = getSmallPet()
@@ -64,7 +64,7 @@ if ((<Fish>pet).swim) {
 // pet is Fish is type predicate
 // form: parameterName is type
 function isFish(pet: Fish|Bird): pet is Fish {
-  return (<Fish>pet).swim()
+  return (<Fish>pet).swim !== undefined
 }
 
 if (isFish(pet)) {
@@ -126,7 +126,7 @@ if (padder instanceof SpaceRepeatingPadder) {
 // calls this his “billion dollar mistake”.
 let s: string|null = "foo"
 s = null
-s = undefined
+// s = undefined
 
 // Optional parameters and properties
 function f(x: number, y?: number) {
@@ -135,7 +135,7 @@ function f(x: number, y?: number) {
 f(1,2)
 f(1)
 f(1, undefined)
-f(1, null)
+// f(1, null)
 
 // optional properties
 class C {
@@ -144,10 +144,10 @@ class C {
 }
 let c = new C()
 c.a = 12
-c.a = undefined
+// c.a = undefined
 c.b = 13
 c.b = undefined
-c.b = null
+// c.b = null
 
 // nullable types guards
 function fixed(name: string|null): string {
@@ -213,7 +213,7 @@ function createElement(tagName: "img"): HTMLImageElement
 function createElement(tagName: "input"): HTMLInputElement
 function createElement(tagName: string): Element {
   // code here
-  return
+  return new Element
 }
 
 // numberic literal types
@@ -258,4 +258,94 @@ function area(s: Shap): number {
   }
 }
 
-// 
+// polymorphic this types
+class BasicCalculator {
+  public constructor(protected value: number = 0) {}
+  public currentValue(): number {
+    return this.value
+  }
+  public add(operand: number): this {
+    return this
+  }
+  public multiply(operand: number): this {
+    this.value *= operand
+    return this
+  }
+}
+let v = new BasicCalculator(2).multiply(5).add(2).currentValue()
+
+class ScientificCalculator extends BasicCalculator {
+  public constructor(value = 0) {
+    super(value)
+  }
+  public sin() {
+    this.value = Math.sin(this.value)
+    return this
+  }
+}
+let v0 = new ScientificCalculator(20).multiply(30).sin()
+
+// index types
+// the index type query operator.
+// For any type T, keyof T is the union of known,
+// public property names of T
+function pluck<T, K extends keyof T>(o: T, names: K[]) {
+  return names.map(n => o[n])
+}
+
+// mapped types（映射类型）
+interface Person {
+  name: string
+  age: number
+}
+let person: Person = { name: "Kevin", age: 29 }
+pluck(person, ['age'])
+
+interface MapNext<T> {
+  [key: string]: T
+}
+let keys: keyof MapNext<number>
+let values: MapNext<number>['foo']
+type Keys = 'option1'|'option2'
+// The syntax resembles the syntax for index 
+// signatures with a for .. in inside.
+// 1. The type variable K, which gets bound to each property in turn.
+// 2. The string literal union Keys, which contains the names 
+// of properties to iterate over.
+// 3. The resulting type of the property.
+type Flags = { [K in Keys]: boolean}
+type Nullable<T> = { [P in keyof T]: T[P]|null }
+
+type Proxy<T> = {
+  get(): T
+  set(value: T): void
+}
+type Proxify<T> = {
+  [P in keyof T]: Proxy<T[P]>
+}
+
+// ts lib map
+// Readonly, Partial and Pick are homomorphic 
+// whereas Record is not. 
+type ReadonlyNext<T> = {
+  readonly [P in keyof T]: T[P]
+}
+type PartialNext<T> = {
+  [P in keyof T]?: T[P]
+}
+type PickNext<T, K extends keyof T> = {
+  [P in K]: T[P]
+}
+type RecordNext<K extends string, T> = {
+  [P in K]: T
+}
+
+type ThreeStringProps = Record<'prop1'|'prop2'|'prop3', string>
+
+function unproxify<T>(t: Proxify<T>): T {
+  let result = {} as T
+  for (const k in t) {
+    result[k] = t[k].get()
+  }
+  return result
+}
