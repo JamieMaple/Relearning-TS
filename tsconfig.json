@@ -2,16 +2,20 @@
   "compileOnSave": true,
   "compilerOptions": {
     "watch": true,
-    "target": "es6",
+    "target": "es5",
     "outDir": "./dist",
-    "module": "es2015",
+    "module": "commonjs",
     "noImplicitAny": true,
     "noImplicitThis": true,
     "moduleResolution": "node",
     "strictNullChecks": true,
-    "removeComments": true
+    "removeComments": true,
+    "lib": [
+      "es2017",
+      "dom"
+    ]
   },
   "files": [
-    "./ts/typeCompatibility.ts"
+    "./ts/advancedTypes.ts"
   ]
 }
