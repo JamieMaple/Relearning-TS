@@ -17,4 +17,18 @@
 
 - [x] Type Compatibility
 
-- [x]ssdf Advanced Types
+- [x] Advanced Types
+
+- [x] Symbol
+
+- [ ] Iterators and Generators
+
+- [ ] Modules
+
+- [ ] Namespaces
+
+- [ ] Namespaces and Modules
+
+- [ ] Module Resolution
+
+- [ ] Declaration Merging

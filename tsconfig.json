@@ -16,6 +16,6 @@
     ]
   },
   "files": [
-    "./ts/advancedTypes.ts"
+    "./ts/symbols.ts"
   ]
 }
