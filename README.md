@@ -23,12 +23,12 @@
 
 - [x] Iterators and Generators
 
-- [ ] Modules
+- [x] Modules
 
-- [ ] Namespaces
+- [x] Namespaces
 
-- [ ] Namespaces and Modules
+- [x] Namespaces and Modules
 
-- [ ] Module Resolution
+- [x] Module Resolution
  
 - [ ] Declaration Merging

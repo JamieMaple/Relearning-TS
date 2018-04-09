@@ -4,7 +4,7 @@
     "watch": true,
     "target": "es5",
     "outDir": "./dist",
-    "module": "commonjs",
+    "module": "es2015",
     "noImplicitAny": true,
     "noImplicitThis": true,
     "moduleResolution": "node",
